@@ -1,0 +1,25 @@
+{
+  "name" : "Skype Links",
+  "version" : "1.0",
+  "description" : "Makes links out of phone numbers on the page, so you can click them do dial with Skype",
+  "background_page" : "background.html",
+  "page_action" :
+  {
+    "default_icon" : "skype-19.png",
+    "default_title" : "Phone numbers were linked on this page"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js" : ["jquery-1.4.4.min.js", "jquery.ba-replacetext.min.js", "contentscript.js"],
+      "run_at" : "document_idle",
+      "all_frames" : true
+    }
+  ],
+  "icons" : {
+    "128" : "skype-128.png"
+  }
+}
