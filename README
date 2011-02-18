@@ -1,0 +1,20 @@
+This plugin will link phone numbers in web pages you visit, so that when you click them a call will be place with Skype, or any other application you configure to respond to a callto: URL.
+
+* Currently only recognises US phone numbers, but the regular expression can be easily updated.
+* On Linux, Chrome uses xdg-open to delegate external URL handling. I don't know how to make xdg-open recognise callto: links yet.
+
+Installation
+============
+
+1. Clone the git repository
+2. Open the Chrome extensions window (Menu -> Tools -> Extensions)
+3. Click the + next to "Developer Mode" if it's not already expanded
+4. Click "Load unpacked extension...", and choose the extension's directory on your drive
+
+To Do
+=====
+
+* Recognize more phone numbers
+* Figure out how to make xdg-open fire up skype
+* User configuration for default country code, etc.
+
