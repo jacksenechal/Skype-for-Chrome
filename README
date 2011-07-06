@@ -16,5 +16,7 @@ To Do
 
 * Recognize more phone numbers
 * Figure out how to make xdg-open fire up skype
+  - http://stackoverflow.com/questions/5037535/how-do-i-set-the-default-application-for-xdg-open-on-a-callto-or-skype-url
+  - http://people.w3.org/~dom/archives/2005/09/integrating-a-new-uris-scheme-handler-to-gnome-and-firefox/
 * User configuration for default country code, etc.
 
