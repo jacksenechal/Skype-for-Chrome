@@ -1,7 +1,13 @@
-This plugin will link phone numbers in web pages you visit, so that when you click them a call will be place with Skype, or any other application you configure to respond to a callto: URL.
+This plugin will link phone numbers in web pages you visit, so that when you
+click them a call will be place with Skype, or any other application you
+configure to respond to a callto: URL.
 
-* Currently only recognises US phone numbers, but the regular expression can be easily updated.
-* On Linux, Chrome uses xdg-open to delegate external URL handling. I don't know how to make xdg-open recognise callto: links yet. (Solution found... see below)
+To Do
+=====
+
+* Recognize more phone numbers
+  - look at http://stackoverflow.com/questions/123559/a-comprehensive-regex-for-phone-number-validation
+* User configuration window for modifying regex, default country code, etc.
 
 Installation
 ============
@@ -11,12 +17,57 @@ Installation
 3. Click the + next to "Developer Mode" if it's not already expanded
 4. Click "Load unpacked extension...", and choose the extension's directory on your drive
 
-To Do
-=====
+Using The Plugin
+================
 
-* Recognize more phone numbers
-* Figure out how to make xdg-open fire up skype
-  - http://stackoverflow.com/questions/5037535/how-do-i-set-the-default-application-for-xdg-open-on-a-callto-or-skype-url
-  - http://people.w3.org/~dom/archives/2005/09/integrating-a-new-uris-scheme-handler-to-gnome-and-firefox/
-* User configuration for default country code, etc.
+This plugin simply turns phone numbers into links like "callto:+18005551212".
+Chrome will then hand that off to the OS to figure out what to do with it.
+Skype on Windows should register a handler for this type of URL. I'm not sure
+about Mac.
+
+Linux
+-----
+
+In Linux, Chrome uses the `xdg-open` command to open links like this. Skype
+doesn't automatically register a URL handler though, so that must be done
+manually. 
+
+1. Download the latest version of `action_handler.py` by Philipp Kilmann, from
+   http://www.kolmann.at/philipp/linux/skype_action_handler/
+2. Place that somewhere on your PATH (/usr/local/bin, for example).
+3. Open a terminal and issue the following commands:
+
+    gconftool-2 -s -t string /desktop/gnome/url-handlers/callto/command '/usr/local/bin/action_handler.py "%s"'
+    gconftool-2 -s -t bool /desktop/gnome/url-handlers/callto/enabled true
+
+4. You may need to edit the `action_handler.py` script to account for the fact
+   that Chrome URL encodes the phone number. So `+18005551212` becomes
+   `%2B18005551212`. Change the correct lines to look like the following: 
+
+    import dbus
+    import sys
+    import re
+    import string
+    import urllib
+    
+    ...
+    
+    user = ""
+    cmd  = ""
+    multiuser = 0
+    arg1 = urllib.unquote(sys.argv[1]);
+    
+    re1 = re.match('^(skype|callto|tel):\/?\/?([\+]?[\.\w-]+[;[\.\w-]+]?)\/?$', arg1);
+    re2 = re.match('^(skype|callto|tel):\/?\/?([\+]?[\.\w-]+[;[\.\w-]+]?)\?(\w+)\/?$', arg1);
+    re3 = re.match('^(skype):\/?\/?\?(chat)\&(blob)=([\.\w-]+)\/?$', arg1);
+
+You may also be interested in the other scripts that Philipp Kolmann has put
+together for Skype on Linux. Check them out at
+https://wspk.zid.tuwien.ac.at/svn/skype/trunk/.
+
+Modification
+============
+
+Please do feel free to modify this plugin at will. The basic functionality is
+in the file contentscript.js. It is very simple at the moment.
 
