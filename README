@@ -69,5 +69,7 @@ Modification
 ============
 
 Please do feel free to modify this plugin at will. The basic functionality is
-in the file contentscript.js. It is very simple at the moment.
+in the file contentscript.js. It is very simple at the moment. If you make
+additions that you would like to see included, just send me a Github pull
+request.
 

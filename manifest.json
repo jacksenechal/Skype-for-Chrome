@@ -1,7 +1,7 @@
 {
   "name" : "Skype Links",
   "version" : "0.1",
-  "description" : "Makes callto: links out of phone numbers on the page, so you can click them do dial with Skype",
+  "description" : "Makes callto: links out of phone numbers on the page, so you can click them to dial with Skype",
   "background_page" : "background.html",
   "page_action" :
   {
