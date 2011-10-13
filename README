@@ -2,13 +2,6 @@ This plugin will link phone numbers in web pages you visit, so that when you
 click them a call will be place with Skype, or any other application you
 configure to respond to a callto: URL.
 
-To Do
-=====
-
-* Recognize more phone numbers
-  - look at http://stackoverflow.com/questions/123559/a-comprehensive-regex-for-phone-number-validation
-* User configuration window for modifying regex, default country code, etc.
-
 Installation
 ============
 
@@ -30,7 +23,7 @@ Linux
 
 In Linux, Chrome uses the `xdg-open` command to open links like this. Skype
 doesn't automatically register a URL handler though, so that must be done
-manually. 
+manually.
 
 1. Download the latest version of `action_handler.py` by Philipp Kilmann, from
    http://www.kolmann.at/philipp/linux/skype_action_handler/
@@ -42,21 +35,21 @@ manually.
 
 4. You may need to edit the `action_handler.py` script to account for the fact
    that Chrome URL encodes the phone number. So `+18005551212` becomes
-   `%2B18005551212`. Change the correct lines to look like the following: 
+   `%2B18005551212`. Change the correct lines to look like the following:
 
     import dbus
     import sys
     import re
     import string
     import urllib
-    
+
     ...
-    
+
     user = ""
     cmd  = ""
     multiuser = 0
     arg1 = urllib.unquote(sys.argv[1]);
-    
+
     re1 = re.match('^(skype|callto|tel):\/?\/?([\+]?[\.\w-]+[;[\.\w-]+]?)\/?$', arg1);
     re2 = re.match('^(skype|callto|tel):\/?\/?([\+]?[\.\w-]+[;[\.\w-]+]?)\?(\w+)\/?$', arg1);
     re3 = re.match('^(skype):\/?\/?\?(chat)\&(blob)=([\.\w-]+)\/?$', arg1);
@@ -64,6 +57,12 @@ manually.
 You may also be interested in the other scripts that Philipp Kolmann has put
 together for Skype on Linux. Check them out at
 https://wspk.zid.tuwien.ac.at/svn/skype/trunk/.
+
+To Do
+=====
+
+* Recognize more phone numbers
+  - look at http://stackoverflow.com/questions/123559/a-comprehensive-regex-for-phone-number-validation
 
 Modification
 ============
