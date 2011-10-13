@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2011 Jack Senechal. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+    <title>Skype Links Extension - Options</title>
+    <style>
+      body {
+        font-family:helvetica, arial, sans-serif;
+        font-size:80%;
+        margin:10px;
+      }
+
+      #header {
+        padding-bottom:1.5em;
+        padding-top:1.5em;
+      }
+
+      #header h1 {
+        font-size: 156%;
+        display:inline;
+        padding-bottom:43px;
+        padding-left:75px;
+        padding-top:40px;
+        background:url(skype-128.png) no-repeat;
+        background-size:67px;
+        background-position:1px 18px;
+      }
+
+      #footer {
+        margin-left: 24px;
+        margin-top: 12px;
+      }
+
+      .settings-content {
+        margin: 6px 6px 0 6px;
+        padding: 10px 10px 10px 10px;
+        color: #333;
+        border: 1px solid #dedede;
+        -webkit-border-radius: 5px 5px;
+      }
+
+      .settings-table {
+        width: 100%;
+        font-size: 1em;
+      }
+
+      .settings-table .left,
+      .settings-table .right {
+        vertical-align: top;
+        border-bottom: 0 dotted #aaa;
+      }
+
+      .settings-table th {
+        text-align: right;
+        width: 1%;
+        white-space: nowrap;
+        padding: 12px 24px 12px 12px;
+      }
+
+      .settings-table td {
+        width: 99%;
+        white-space: nowrap;
+        padding: 12px;
+      }
+
+      .settings-table textarea {
+        width: 100%;
+        height: 5em;
+      }
+
+      .settings-tip {
+        color: #444;
+        font-size: 11px;
+      }
+
+    </style>
+    <script type="text/javascript" src="options.js"></script>
+  </head>
+  <body onLoad="loadOptions();">
+
+    <div id="header"><h1>Skype Links Extension Options</h1></div>
+
+    <form name="skypelinks">
+      <div class="settings-content">
+        <table class="settings-table" id="settings-voicemail-content">
+          <tr>
+            <th class="left">Link Type</th>
+            <td class="right">
+              <select id="linkType">
+                <option value="callto:">callto:</option>
+                <option value="skype:">skype:</option>
+              </select>
+              <label for="linkType">Select the type of link to create.</label>
+            </td>
+          </tr>
+          <tr>
+            <th class="left">International Number Regex</th>
+            <td class="right">
+              <textarea id="intlRegex"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th class="left">International Number Replacement</th>
+            <td class="right">
+              <input type="text" id="intlReplacement"/>
+            </td>
+          </tr>
+          <tr>
+            <th class="left">Domestic Number Regex</th>
+            <td class="right">
+              <textarea id="homeRegex"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th class="left">Domestic Number Replacement</th>
+            <td class="right">
+              <input type="text" id="homeReplacement"/>
+            </td>
+          </tr>
+          <tr>
+            <th class="left">Clear Extension Data</th>
+            <td class="right">
+              <button onclick="clearData()">Clear Data and Reset To Default Values</button>
+              <span class="settings-tip">Try this if the extension isn't updating data correctly.</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+
+    <div id="footer">
+      <button id="save-button" style="font-weight:bold" onclick="saveOptions()">Save</button>
+      <span id="status" style="margin-left: 10px; color: #0e5ecf; font-weight:bold;"></span>
+    </div>
+  </body>
+</html>

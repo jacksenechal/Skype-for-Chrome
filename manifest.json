@@ -3,6 +3,7 @@
   "version" : "0.1",
   "description" : "Makes callto: links out of phone numbers on the page, so you can click them to dial with Skype",
   "background_page" : "background.html",
+  "options_page" : "options.html",
   "page_action" :
   {
     "default_icon" : "skype-19.png",
