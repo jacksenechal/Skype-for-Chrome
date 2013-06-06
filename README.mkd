@@ -61,7 +61,7 @@ manually.
 
 You may also be interested in the other scripts that Philipp Kolmann has put
 together for Skype on Linux. Check them out at
-https://wspk.zid.tuwien.ac.at/svn/skype/trunk/.
+http://www.kolmann.at/philipp/linux/.
 
 To Do
 =====
