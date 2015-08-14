@@ -78,9 +78,10 @@
       }
 
     </style>
+    <script type="text/javascript" src="loading.js"></script>
     <script type="text/javascript" src="options.js"></script>
   </head>
-  <body onLoad="loadOptions();">
+  <body>
 
     <div id="header"><h1>Skype Links Extension Options</h1></div>
 
@@ -125,7 +126,7 @@
           <tr>
             <th class="left">Clear Extension Data</th>
             <td class="right">
-              <button onclick="clearData()">Clear Data and Reset To Default Values</button>
+              <button id="reset-button">Clear Data and Reset To Default Values</button>
               <span class="settings-tip">Try this if the extension isn't updating data correctly.</span>
             </td>
           </tr>
@@ -134,7 +135,7 @@
     </form>
 
     <div id="footer">
-      <button id="save-button" style="font-weight:bold" onclick="saveOptions()">Save</button>
+      <button id="save-button" style="font-weight:bold">Save</button>
       <span id="status" style="margin-left: 10px; color: #0e5ecf; font-weight:bold;"></span>
     </div>
   </body>

@@ -5,7 +5,7 @@
  */
 
 // load options
-chrome.extension.sendRequest({action: 'options'}, function(response) {
+chrome.extension.sendMessage({action: 'options'}, function(response) {
   // the localStorage mechanism converts the regex to a string, so we have to convert it back
   var stripper = /^\/|\/$/g;
   var intlRegex = RegExp(response.options.intlRegex.replace(stripper, ''), 'gm');
@@ -29,7 +29,7 @@ chrome.extension.sendRequest({action: 'options'}, function(response) {
   }
   if (found) {
     // Notify the background page to update the page icon
-    chrome.extension.sendRequest({action: 'showPageAction'}, function() {});
+    chrome.extension.sendMessage({action: 'showPageAction'}, function() {});
   }
 });
 
